@@ -38,6 +38,7 @@ class Install extends Controller
                 'email' => 'required|string|email|max:255|unique:users',
                 'phone' => 'required|numeric|digits:10|regex:/^([0-9\s\-\+\(\)]*)$/|unique:users',
                 'password' => 'required|string|min:8|confirmed',
+                
             ],
             $messages
         );
@@ -51,6 +52,7 @@ class Install extends Controller
                     'name' => $req->get('name'),
                     'email' => $req->get('email'),
                     'phone' => $req->get('phone'),
+                    'profile' => array_rand(['0','1'],1),
                     'password' => Hash::make($req->get('password')),
                 ]);
                
